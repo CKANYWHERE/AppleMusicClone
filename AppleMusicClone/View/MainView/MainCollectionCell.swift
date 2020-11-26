@@ -39,6 +39,13 @@ class MainCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateUI(item: Track?) {
+        guard let track = item else { return }
+        imgView.image = track.artwork
+        lblSong.text = track.title
+        lblAuthor.text = track.artist
+    }
+    
 
     func setUpLayout(){
        

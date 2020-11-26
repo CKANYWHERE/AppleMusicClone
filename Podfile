@@ -19,6 +19,7 @@ target 'AppleMusicClone' do
   pod 'SnapKit'
   pod 'Then'
   pod 'ReactorKit'
+  pod 'RxDataSources'
   pod 'Gedatsu', configuration:%w(Debug)
   
   pod 'Firebase/Analytics'

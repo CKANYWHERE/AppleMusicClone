@@ -37,6 +37,9 @@
 		FD0C6A60256E8CE20023EE3C /* Sampled in your own sweet way.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FD0C6A4A256E8CE20023EE3C /* Sampled in your own sweet way.mp3 */; };
 		FD0C6A61256E8CE20023EE3C /* valentin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FD0C6A4B256E8CE20023EE3C /* valentin.mp3 */; };
 		FD0C6A64256E9C360023EE3C /* MainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A63256E9C360023EE3C /* MainReactor.swift */; };
+		FD0C6A67256F8CCD0023EE3C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A66256F8CCD0023EE3C /* Track.swift */; };
+		FD0C6A6F256F8D450023EE3C /* AVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */; };
+		FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3DC256FE1E000F6277A /* TrackSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,9 @@
 		FD0C6A4A256E8CE20023EE3C /* Sampled in your own sweet way.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sampled in your own sweet way.mp3"; sourceTree = "<group>"; };
 		FD0C6A4B256E8CE20023EE3C /* valentin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = valentin.mp3; sourceTree = "<group>"; };
 		FD0C6A63256E9C360023EE3C /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
+		FD0C6A66256F8CCD0023EE3C /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerItem.swift; sourceTree = "<group>"; };
+		FDFAB3DC256FE1E000F6277A /* TrackSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 		FD0C69A7256D2F640023EE3C /* AppleMusicClone */ = {
 			isa = PBXGroup;
 			children = (
+				FD0C6A69256F8D050023EE3C /* Extension */,
 				FD0C6A35256E8CBA0023EE3C /* Resources */,
 				FD0C6A00256E32530023EE3C /* Model */,
 				FD0C69B1256D2F650023EE3C /* Assets.xcassets */,
@@ -183,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				FD0C6A05256E32B70023EE3C /* MusicModel.swift */,
+				FD0C6A66256F8CCD0023EE3C /* Track.swift */,
+				FDFAB3DC256FE1E000F6277A /* TrackSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +223,14 @@
 				FD0C6A43256E8CE10023EE3C /* when the leaves start falling.mp3 */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FD0C6A69256F8D050023EE3C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,9 +370,12 @@
 			files = (
 				FD0C6A64256E9C360023EE3C /* MainReactor.swift in Sources */,
 				FD0C69A9256D2F640023EE3C /* AppDelegate.swift in Sources */,
+				FD0C6A6F256F8D450023EE3C /* AVPlayerItem.swift in Sources */,
 				FD0C6A06256E32B70023EE3C /* MusicModel.swift in Sources */,
 				FD0C69FD256D4D860023EE3C /* MainCollectionCell.swift in Sources */,
 				FD0C69CD256D3A670023EE3C /* MainViewController.swift in Sources */,
+				FD0C6A67256F8CCD0023EE3C /* Track.swift in Sources */,
+				FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
