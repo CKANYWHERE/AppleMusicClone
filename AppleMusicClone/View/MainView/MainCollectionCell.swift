@@ -12,17 +12,17 @@ class MainCollectionCell: UICollectionViewCell {
     
     lazy var imgView = UIImageView().then {
        // $0.setTitle("login", for: .normal)
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleToFill
     }
     
     lazy var lblAuthor = UILabel().then {
         $0.textColor = .black
-        $0.font = UIFont.systemFont(ofSize: 9)
+        $0.font = UIFont.systemFont(ofSize: 12)
     }
     
     lazy var lblSong = UILabel().then {
         $0.textColor = .black
-        $0.font = UIFont.boldSystemFont(ofSize: 12)
+        $0.font = UIFont.boldSystemFont(ofSize: 16)
     }
     
     override init(frame: CGRect) {
@@ -67,7 +67,7 @@ class MainCollectionCell: UICollectionViewCell {
         
         lblAuthor.snp.makeConstraints{ make in
           //  make.top.equalTo(imgView.snp.bottom).offset(5.0)
-            make.top.equalTo(lblSong.snp.bottom).offset(5.0)
+            make.top.equalTo(lblSong.snp.bottom).offset(3.0)
             make.leading.trailing.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.1)

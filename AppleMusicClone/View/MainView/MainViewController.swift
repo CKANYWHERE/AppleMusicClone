@@ -26,18 +26,28 @@ class MainViewController: UIViewController,ReactorKit.View {
         cell.lblAuthor.text = item.artist
         cell.lblSong.text = item.title
         return cell
+    },configureSupplementaryView: {(ds ,cv, kind, ip) in
+        
+        let section = cv.dequeueReusableSupplementaryView(ofKind: kind,
+                                   withReuseIdentifier: "collectionViewHeader", for: ip) as! MainCollectionHeader
+        section.headerTitle.text = "\(ds[ip.section].items[0].albumName)"
+        return section
     })
-    
+     
     lazy var layout = UICollectionViewFlowLayout().then{
-        $0.itemSize =  CGSize(width: (view.bounds.width/2)-20, height: (view.bounds.height/5))
+        $0.itemSize =  CGSize(width: (view.bounds.width/2)-40, height: (view.bounds.height/4))
+        $0.headerReferenceSize = CGSize(width: (view.bounds.width), height: (view.bounds.height/4))
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{
-        $0.contentInset = UIEdgeInsets(top:10, left: 10, bottom: 10, right: 10)
+        $0.contentInset = UIEdgeInsets(top:10, left: 20, bottom: 10, right: 20)
         $0.backgroundColor = .white
+        $0.register(MainCollectionHeader.self
+                    , forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader
+                    , withReuseIdentifier: "collectionViewHeader")
         $0.register(MainCollectionCell.self, forCellWithReuseIdentifier: "collectionView")
     }
-
+    
     override func viewDidLoad() {
       super.viewDidLoad()
         view.backgroundColor = .white
@@ -48,6 +58,7 @@ class MainViewController: UIViewController,ReactorKit.View {
     }
     
     func bind(reactor: MainReactor) {
+        
         let firstLoad = rx.viewWillAppear
             .map { _ in () }
         
@@ -56,10 +67,16 @@ class MainViewController: UIViewController,ReactorKit.View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        
+        collectionView.rx.willDisplaySupplementaryView.subscribe(onNext: { view, kind, indexPath in
+            print("will display the partition indexPath as: \(indexPath)")
+            print("Head or tail will be displayed: \(kind)")
+            print("will show the head or tail view: \(view)\n")
+        }).disposed(by: disposeBag)
+        
         reactor.state.map{$0.albums}
             .bind(to: collectionView.rx.items(dataSource: self.dataSource))
             .disposed(by: disposeBag)
-
     }
     
     func setupUI() {
@@ -75,34 +92,4 @@ class MainViewController: UIViewController,ReactorKit.View {
         }
     }
     
-//    func bindCollectionView(){
-//        let musics = Observable.of([
-//                                    MusicModel(author: "test", song: "test", img: "test")
-//                                    ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")
-//                                   ,MusicModel(author: "test2", song: "test2", img: "test2")]
-//                                   )
-//
-//        musics.bind(to: collectionView.rx.items(cellIdentifier: "collectionView", cellType: MainCollectionCell.self)){ index, song, cell in
-//            cell.imgView.image = UIImage(named: song.img ?? "")
-//            cell.lblAuthor.text = song.author
-//            cell.lblSong.text = song.song
-//
-//        }.disposed(by: disposeBag)
-//
-//    }
 }

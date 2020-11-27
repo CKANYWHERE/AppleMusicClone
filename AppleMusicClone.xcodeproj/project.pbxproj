@@ -40,6 +40,7 @@
 		FD0C6A67256F8CCD0023EE3C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A66256F8CCD0023EE3C /* Track.swift */; };
 		FD0C6A6F256F8D450023EE3C /* AVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */; };
 		FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3DC256FE1E000F6277A /* TrackSection.swift */; };
+		FDFAB3E02570A29900F6277A /* MainCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3DF2570A29900F6277A /* MainCollectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		FD0C6A66256F8CCD0023EE3C /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerItem.swift; sourceTree = "<group>"; };
 		FDFAB3DC256FE1E000F6277A /* TrackSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSection.swift; sourceTree = "<group>"; };
+		FDFAB3DF2570A29900F6277A /* MainCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				FD0C69FC256D4D860023EE3C /* MainCollectionCell.swift */,
 				FD0C69CC256D3A670023EE3C /* MainViewController.swift */,
 				FD0C6A63256E9C360023EE3C /* MainReactor.swift */,
+				FDFAB3DF2570A29900F6277A /* MainCollectionHeader.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				FD0C69CD256D3A670023EE3C /* MainViewController.swift in Sources */,
 				FD0C6A67256F8CCD0023EE3C /* Track.swift in Sources */,
 				FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */,
+				FDFAB3E02570A29900F6277A /* MainCollectionHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
