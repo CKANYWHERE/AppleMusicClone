@@ -18,11 +18,15 @@ class MainCollectionHeader: UICollectionReusableView{
     
     lazy var warpButton = UIButton().then{
         $0.backgroundColor = .darkGray
-        $0.alpha = 0.4
+        $0.alpha = 0.8
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 10
     }
     
     lazy var headerImage = UIImageView().then{
         $0.contentMode = .scaleToFill
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 10
     }
     
     lazy var lblPlayNow = UILabel().then{
@@ -63,14 +67,14 @@ class MainCollectionHeader: UICollectionReusableView{
             $0.left.equalToSuperview().offset(0)
             $0.top.equalToSuperview().offset(15)
             $0.width.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.3)
-        }
+            $0.height.equalToSuperview().multipliedBy(0.2)
+    }
         
         headerImage.snp.makeConstraints{
             $0.left.equalToSuperview().offset(0)
             $0.top.equalTo(headerTitle.snp.bottom).offset(15)
             $0.width.equalTo(headerTitle.snp.width)
-            $0.height.equalToSuperview().multipliedBy(0.7)
+            $0.height.equalToSuperview().multipliedBy(0.65)
         }
         
         warpButton.snp.makeConstraints{
@@ -82,22 +86,22 @@ class MainCollectionHeader: UICollectionReusableView{
         
         lblTodayPick.snp.makeConstraints{
             $0.left.equalTo(headerImage).offset(5)
-            $0.bottom.equalTo(headerImage).inset(3)
+            $0.bottom.equalTo(headerImage).inset(5)
             $0.width.equalTo(headerImage).multipliedBy(0.7)
             $0.height.equalTo(headerImage).multipliedBy(0.2)
         }
         
         lblPlayNow.snp.makeConstraints{
             $0.left.equalTo(headerImage).offset(5)
-            $0.bottom.equalTo(lblTodayPick).inset(3)
+            $0.bottom.equalTo(lblTodayPick).offset(5)
             $0.width.equalTo(headerImage)
             $0.height.equalTo(headerImage).multipliedBy(0.1)
         }
         
         playImg.snp.makeConstraints{
-            $0.left.equalTo(lblTodayPick).offset(5)
+            $0.right.equalToSuperview().inset(10)
             $0.bottom.equalTo(lblTodayPick)
-            $0.width.equalTo(lblTodayPick).multipliedBy(0.1)
+            $0.width.equalTo(lblTodayPick.snp.height)
             $0.height.equalTo(lblTodayPick)
         }
         

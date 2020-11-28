@@ -27,16 +27,18 @@ class MainViewController: UIViewController,ReactorKit.View {
         cell.lblSong.text = item.title
         return cell
     },configureSupplementaryView: {(ds ,cv, kind, ip) in
-        
         let section = cv.dequeueReusableSupplementaryView(ofKind: kind,
                                    withReuseIdentifier: "collectionViewHeader", for: ip) as! MainCollectionHeader
-        section.headerTitle.text = "\(ds[ip.section].items[0].albumName)"
+        
+        let randomTrack = ds[ip.section].items.randomElement()
+        section.lblTodayPick.text = "Today's Pick is \(randomTrack!.artist)'s album"
+        section.headerImage.image = randomTrack!.artwork
         return section
     })
      
     lazy var layout = UICollectionViewFlowLayout().then{
         $0.itemSize =  CGSize(width: (view.bounds.width/2)-40, height: (view.bounds.height/4))
-        $0.headerReferenceSize = CGSize(width: (view.bounds.width), height: (view.bounds.height/4))
+        $0.headerReferenceSize = CGSize(width: (view.bounds.width), height: (view.bounds.height/2))
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout).then{

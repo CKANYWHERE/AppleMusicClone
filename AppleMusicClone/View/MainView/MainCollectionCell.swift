@@ -13,6 +13,8 @@ class MainCollectionCell: UICollectionViewCell {
     lazy var imgView = UIImageView().then {
        // $0.setTitle("login", for: .normal)
         $0.contentMode = .scaleToFill
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 10
     }
     
     lazy var lblAuthor = UILabel().then {
