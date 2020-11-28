@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 import RxSwift
 import RxCocoa
 import RxViewController
@@ -16,25 +17,43 @@ import Gedatsu
 
 class MainViewController: UIViewController,ReactorKit.View {
     
+    //var item : AVPlayerItem?
+    
+    
+//    @objc func cardTapped(_ sender: UIButton, item:AVPlayerItem) {
+//       // guard item != nil else { return }
+//        let musicDetailVC = MusicDetailViewController()
+//        musicDetailVC.music = item
+//        self.present(musicDetailVC, animated: true)
+//    }
+    
     var disposeBag = DisposeBag()
     let reactor = MainReactor()
     
-    let dataSource = RxCollectionViewSectionedReloadDataSource<TrackSection>(configureCell:{
+    lazy var dataSource = RxCollectionViewSectionedReloadDataSource<TrackSection>(configureCell:{
         dataSource, collectionView, indexPath, item in
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionView", for: indexPath) as! MainCollectionCell
-        cell.imgView.image = item.artwork
-        cell.lblAuthor.text = item.artist
-        cell.lblSong.text = item.title
+        let track = item.convertToTrack()
+        cell.imgView.image = track?.artwork
+        cell.lblAuthor.text = track?.artist
+        cell.lblSong.text = track?.title
         return cell
     },configureSupplementaryView: {(ds ,cv, kind, ip) in
         let section = cv.dequeueReusableSupplementaryView(ofKind: kind,
                                    withReuseIdentifier: "collectionViewHeader", for: ip) as! MainCollectionHeader
-        
-        let randomTrack = ds[ip.section].items.randomElement()
+        let randomAv = ds[ip.section].items.randomElement()
+        let randomTrack = randomAv?.convertToTrack()
         section.lblTodayPick.text = "Today's Pick is \(randomTrack!.artist)'s album"
         section.headerImage.image = randomTrack!.artwork
+        section.item = randomAv
+        section.tapHandler = { item in
+            let musicDetailVC = MusicDetailViewController()
+            musicDetailVC.music = item
+            self.present(musicDetailVC, animated: true)
+        }
         return section
     })
+
      
     lazy var layout = UICollectionViewFlowLayout().then{
         $0.itemSize =  CGSize(width: (view.bounds.width/2)-40, height: (view.bounds.height/4))
@@ -70,11 +89,20 @@ class MainViewController: UIViewController,ReactorKit.View {
             .disposed(by: disposeBag)
         
         
-        collectionView.rx.willDisplaySupplementaryView.subscribe(onNext: { view, kind, indexPath in
+        collectionView.rx.willDisplaySupplementaryView.subscribe(onNext: { reUseableView, kind, indexPath in
             print("will display the partition indexPath as: \(indexPath)")
             print("Head or tail will be displayed: \(kind)")
-            print("will show the head or tail view: \(view)\n")
+            print("will show the head or tail view: \(reUseableView)\n")
         }).disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(AVPlayerItem.self)
+            .subscribe(onNext:{item in
+                let musicDetailVC = MusicDetailViewController()
+                musicDetailVC.music = item
+                self.present(musicDetailVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
         
         reactor.state.map{$0.albums}
             .bind(to: collectionView.rx.items(dataSource: self.dataSource))
@@ -94,4 +122,5 @@ class MainViewController: UIViewController,ReactorKit.View {
         }
     }
     
+  
 }

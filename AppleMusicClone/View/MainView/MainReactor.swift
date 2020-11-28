@@ -42,30 +42,11 @@ class MainReactor: Reactor {
         }
         return newState
     }
-
-    private func loadAlbum() -> [AlbumSection]{
-        let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil) ?? []
-        let tracks = urls.map { AVPlayerItem(url: $0) }
-        let trackList = tracks.compactMap { $0.convertToTrack() }
-        let albumDics = Dictionary(grouping: trackList, by: { track in  track.albumName })
-        var albums: [Album] = []
-        for (key, value) in albumDics {
-            let title = key
-            let tracks = value
-            let album = Album(title: title, tracks: tracks)
-            print(title)
-            albums.append(album)
-        }
-        let albumSection = AlbumSection(header: "Today's Pick", items: albums)
-        let sectionData = [albumSection]
-        return sectionData
-    }
     
     private func loadTracks() -> [TrackSection] {
         let urls = Bundle.main.urls(forResourcesWithExtension: "mp3", subdirectory: nil) ?? []
         let tracks = urls.map { AVPlayerItem(url: $0) }
-        let trackList = tracks.compactMap { $0.convertToTrack() }
-        let trackSection = TrackSection(header: "Today's Pick", items: trackList)
+        let trackSection = TrackSection(header: "Today's Pick", items: tracks)
         let sectionData = [trackSection]
         return sectionData
     }

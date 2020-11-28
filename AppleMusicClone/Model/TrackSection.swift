@@ -7,6 +7,7 @@
 
 import Foundation
 import RxDataSources
+import AVFoundation
 
 struct TrackSection {
     var header: String
@@ -21,7 +22,7 @@ public protocol TrackSectionType
 }
 
 extension TrackSection: SectionModelType {
-    typealias Item = Track
+    typealias Item = AVPlayerItem
     init(original: TrackSection, items: [Item]) {
         self = original
         self.items = items

@@ -7,9 +7,11 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class MainCollectionHeader: UICollectionReusableView{
     
+    var item: AVPlayerItem?
     lazy var headerTitle = UILabel().then{
         $0.text = "Today's Pick"
         $0.textColor = .black
@@ -21,6 +23,9 @@ class MainCollectionHeader: UICollectionReusableView{
         $0.alpha = 0.8
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 10
+        $0.isUserInteractionEnabled = true
+        $0.isEnabled = true
+        //$0.addTarget(MainViewController.self, action: #selector(cardTapped(_:)), for: .touchDown)
     }
     
     lazy var headerImage = UIImageView().then{
@@ -44,10 +49,19 @@ class MainCollectionHeader: UICollectionReusableView{
     lazy var playImg = UIImageView().then{
         $0.image = UIImage(systemName: "play.circle.fill")
         $0.tintColor = .systemPink
+        $0.isUserInteractionEnabled = true
+    }
+    var tapHandler: ((AVPlayerItem) -> Void)?
+    
+    @objc func cardTapped() {
+        guard let todaysItem = item else { return }
+        tapHandler?(todaysItem)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
+        self.addGestureRecognizer(tapGesture)
         self.addSubview(headerTitle)
         self.addSubview(headerImage)
         headerImage.addSubview(warpButton)
@@ -68,7 +82,7 @@ class MainCollectionHeader: UICollectionReusableView{
             $0.top.equalToSuperview().offset(15)
             $0.width.equalToSuperview()
             $0.height.equalToSuperview().multipliedBy(0.2)
-    }
+        }
         
         headerImage.snp.makeConstraints{
             $0.left.equalToSuperview().offset(0)

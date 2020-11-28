@@ -41,6 +41,8 @@
 		FD0C6A6F256F8D450023EE3C /* AVPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */; };
 		FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3DC256FE1E000F6277A /* TrackSection.swift */; };
 		FDFAB3E02570A29900F6277A /* MainCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3DF2570A29900F6277A /* MainCollectionHeader.swift */; };
+		FDFAB3E3257218E000F6277A /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3E2257218E000F6277A /* MusicDetailViewController.swift */; };
+		FDFAB3E6257218F100F6277A /* MusicDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFAB3E5257218F100F6277A /* MusicDetailReactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		FD0C6A6E256F8D450023EE3C /* AVPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerItem.swift; sourceTree = "<group>"; };
 		FDFAB3DC256FE1E000F6277A /* TrackSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSection.swift; sourceTree = "<group>"; };
 		FDFAB3DF2570A29900F6277A /* MainCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionHeader.swift; sourceTree = "<group>"; };
+		FDFAB3E2257218E000F6277A /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		FDFAB3E5257218F100F6277A /* MusicDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 		FD0C69C2256D37A50023EE3C /* MusicDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				FDFAB3E2257218E000F6277A /* MusicDetailViewController.swift */,
+				FDFAB3E5257218F100F6277A /* MusicDetailReactor.swift */,
 			);
 			path = MusicDetailView;
 			sourceTree = "<group>";
@@ -379,7 +385,9 @@
 				FD0C69CD256D3A670023EE3C /* MainViewController.swift in Sources */,
 				FD0C6A67256F8CCD0023EE3C /* Track.swift in Sources */,
 				FDFAB3DD256FE1E000F6277A /* TrackSection.swift in Sources */,
+				FDFAB3E6257218F100F6277A /* MusicDetailReactor.swift in Sources */,
 				FDFAB3E02570A29900F6277A /* MainCollectionHeader.swift in Sources */,
+				FDFAB3E3257218E000F6277A /* MusicDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
