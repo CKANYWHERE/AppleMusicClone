@@ -3,4 +3,102 @@
    uuid = "C685D5CF-16C4-484A-AFC0-15544F9D459E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14A3FEDB-A703-4511-A44A-32B634A0FA50"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AE5E97B-5C64-4C2B-86CC-60566273975E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "bind(reactor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96D2CC4E-3F16-4D05-A1DD-C54C7ED8B95C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "bind(reactor:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "96D2CC4E-3F16-4D05-A1DD-C54C7ED8B95C - 20eb0668f5f24f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusicClone.MusicDetailViewController.bind(reactor: AppleMusicClone.MusicDetailReactor) -&gt; ()"
+                  moduleName = "AppleMusicClone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minchang-gyeong/Desktop/SwiftProject/AppleMusicClone/AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1726">
+               </Location>
+               <Location
+                  uuid = "96D2CC4E-3F16-4D05-A1DD-C54C7ED8B95C - 1db40145a6f5e0e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (RxSwift.Event&lt;Swift.Optional&lt;__C.AVPlayerItem&gt;&gt;) -&gt; () in AppleMusicClone.MusicDetailViewController.bind(reactor: AppleMusicClone.MusicDetailReactor) -&gt; ()"
+                  moduleName = "AppleMusicClone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minchang-gyeong/Desktop/SwiftProject/AppleMusicClone/AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "876">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5A18ED7-7210-4F9E-8617-68EF27A9BA9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusicClone/View/MusicDetailView/MusicDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "lblCurrent"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

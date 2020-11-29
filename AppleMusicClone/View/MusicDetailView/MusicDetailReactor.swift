@@ -13,6 +13,7 @@ import RxCocoa
 class MusicDetailReactor:Reactor{
    
     let initialState: State = State()
+    private let player = AVPlayer()
     
      enum Action {
         case loadMusic(AVPlayerItem?)
