@@ -14,6 +14,7 @@ class MusicDetailViewController:UIViewController, ReactorKit.View{
     
     var disposeBag: DisposeBag = DisposeBag()
     let reactor : MusicDetailReactor = MusicDetailReactor()
+    let simplePlayer = SimplePlayer.shared
     var music: AVPlayerItem!
     
     lazy var lblSong = UILabel().then{
@@ -135,6 +136,29 @@ class MusicDetailViewController:UIViewController, ReactorKit.View{
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
+        btnPlay.rx.tap
+            .map{_ in Reactor.Action.play}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        slider.rx.value.subscribe(onNext: { value in
+             let totalTime = Float(CMTimeGetSeconds(self.simplePlayer.currentItem!.duration))
+             let seconds = value * totalTime
+             let time = CMTime(seconds: Double(seconds), preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+             self.simplePlayer.seek(to: time)
+             }).disposed(by: disposeBag)
+        
+        reactor.state.map{$0.isPlaying}
+            .subscribe{ [weak self] state in
+                if state.element.value == false{
+                    self?.btnPlay.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+                    self?.simplePlayer.pause()
+                }else{
+                    self?.btnPlay.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+                    self?.simplePlayer.play()
+                }
+            }.disposed(by: disposeBag)
+        
         reactor.state.map{$0.music}
             .subscribe{ [weak self] state in
                 let model = state.element?.value?.convertToTrack()!
@@ -143,6 +167,28 @@ class MusicDetailViewController:UIViewController, ReactorKit.View{
                 self?.mainImg.image = model?.artwork
             }.disposed(by: disposeBag)
         
+        simplePlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main){[weak self] time in
+            self?.updateSlider(with: time)
+        }
+        
     }
     
+    private func updateSlider(with time: CMTime) {
+        let currentTime = CMTimeGetSeconds(time)
+        var totalTime = CMTimeGetSeconds(simplePlayer.currentItem!.duration)
+        if totalTime.isNaN {
+            totalTime = 0
+        }
+        lblCurrent.text = secondsToString(sec: simplePlayer.currentTime)
+        lblTotal.text = secondsToString(sec: totalTime)
+        slider.value = Float(currentTime / totalTime)
+    }
+
+    func secondsToString(sec: Double) -> String {
+        guard sec.isNaN == false else { return "00:00" }
+        let totalSeconds = Int(sec)
+        let min = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%02d:%02d", min, seconds)
+    }
 }

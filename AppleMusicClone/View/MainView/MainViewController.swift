@@ -99,6 +99,7 @@ class MainViewController: UIViewController,ReactorKit.View {
             .subscribe(onNext:{item in
                 let musicDetailVC = MusicDetailViewController()
                 musicDetailVC.music = item
+                musicDetailVC.simplePlayer.replaceCurrentItem(with: item)
                 self.present(musicDetailVC, animated: true)
             })
             .disposed(by: disposeBag)
